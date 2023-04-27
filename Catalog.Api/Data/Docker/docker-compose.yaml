@@ -1,0 +1,17 @@
+services:
+  postgres-catalog:
+    image: postgres
+    volumes:
+      - database:/var/lib/postgresql/data
+      - ./docker/postgres/dumps/:/tmp/
+    ports:
+      - "5433:5432"
+    environment:
+      LC_ALL: C.UTF-8
+      POSTGRES_DB: "postgresCatalog"
+      POSTGRES_USER: "postgresCatalog"
+      POSTGRES_PASSWORD: "postgresCatalog"
+    restart: always
+volumes:
+  database:
+    driver: local
